@@ -1,34 +1,34 @@
 module.exports = {
-    entry: './app/app.jsx',
-    output: {
-        path: __dirname,
-        filename: './public/bundle.js'
+  entry: './app/app.jsx',
+  output: {
+    path: __dirname,
+    filename: './public/bundle.js'
+  },
+  resolve: {
+    root: __dirname,
+    alias: {
+      Main: 'app/components/Main.jsx',
+      Nav: 'app/components/Nav.jsx',
+      Weather: 'app/components/Weather.jsx',
+      WeatherForm: 'app/components/WeatherForm.jsx',
+      WeatherMessage: 'app/components/WeatherMessage.jsx',
+      About: 'app/components/About.jsx',
+      Examples: 'app/components/Examples.jsx',
+      openWeatherMap: 'app/api/openWeatherMap.jsx'
     },
-    resolve: {
-        root: __dirname,
-        alias: {
-            Main: 'app/Components/Main.jsx',
-            Nav: 'app/Components/Nav.jsx',
-            Weather: 'app/Components/Weather.jsx',
-            WeatherForm: 'app/Components/WeatherForm.jsx',
-            WeatherMessage: 'app/Components/WeatherMessage.jsx',
-            About: 'app/Components/About.jsx',
-            Examples: 'app/Components/Examples.jsx',
-            OpenWeatherMap: 'app/api/openWeatherMap.jsx'
+    extensions: ['', '.js', '.jsx']
+  },
+  module: {
+    loaders: [
+      {
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015', 'stage-0']
         },
-        extensions: ['', '.js', '.jsx']
-    },
-    module: {
-        loaders: [
-            {
-                loader: 'babel-loader',
-                query: {
-                    presets: ['react', 'es2015', 'stage-0']
-                },
-                test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components)/
-            }
-        ]
-    },
-    devtool: 'eval-source-map'
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/
+      }
+    ]
+  },
+  devtool: 'cheap-module-eval-source-map'
 };
